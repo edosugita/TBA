@@ -1,0 +1,33 @@
+.container {
+  width: 35%;
+  padding: 40px;
+  border: 2px solid #d0cece;
+  border-radius: 10px;
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
+
+.container h5 {
+  margin-bottom: 40px;
+}
+
+.btn {
+  width: 100%;
+}
+
+.btn,
+.form-control:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.link {
+  padding: 0 !important;
+  margin-top: 10px;
+}
+
+@media (max-width: 830px) {
+  .container {
+    width: auto;
+  }
+}
