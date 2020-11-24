@@ -11,6 +11,7 @@ if (!isset($_SESSION['nim'])) {
 
 $result = mysqli_query($conn, "SELECT * FROM mahasiswa WHERE email = '$email'");
 $row = mysqli_fetch_assoc($result);
+
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +20,7 @@ $row = mysqli_fetch_assoc($result);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | Siakad</title>
+    <title><?= $title['title']; ?></title>
 
     <link rel="stylesheet" href="css/bootstrap.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -33,7 +34,7 @@ $row = mysqli_fetch_assoc($result);
     <div class="wrapper d-flex align-items-stretch">
         <nav id="sidebar">
             <div class="p-4 pt-5">
-                <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(img/logo.png);"></a>
+                <a href="home.php" class="img logo rounded-circle mb-5" style="background-image: url(img/logo.png);"></a>
                 <center>
                     <p>Dashboard Siakad UM</p><br>
                 </center>
@@ -74,6 +75,9 @@ $row = mysqli_fetch_assoc($result);
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><?= $row['nama']; ?></a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="logout.php">Log Out</a>
                             </li>

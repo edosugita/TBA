@@ -69,7 +69,7 @@ if (isset($_POST['login'])) {
                     $_SESSION['email'] = $row['email'];
 
                     echo '<script language="javascript">
-                alert ("Registrasi Berhasil Di Lakukan!");
+                alert ("Login Berhasil Di Lakukan!");
                 window.location="home.php";
                 </script>';
                     exit();
