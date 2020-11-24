@@ -49,7 +49,7 @@ $row = mysqli_fetch_assoc($result);
                         <a href="#">Kartu Hasil Studi</a>
                     </li>
                     <li>
-                        <a href="#">Rencana Studi</a>
+                        <a href="rencanastudi.php">Rencana Studi</a>
                     </li>
                     <li>
                         <a href="#">Daftar Hasil Studi</a>
