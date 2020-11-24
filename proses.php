@@ -71,7 +71,7 @@ if (isset($_POST['login'])) {
 
                     echo '<script language="javascript">
                 alert ("Registrasi Berhasil Di Lakukan!");
-                window.location="beranda.php";
+                window.location="home.php";
                 </script>';
                     exit();
                 } else {
