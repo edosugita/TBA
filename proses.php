@@ -33,8 +33,7 @@ if (isset($_POST['register'])) {
 
         $pass = password_hash($pass, PASSWORD_DEFAULT);
 
-        mysqli_query($conn, "INSERT INTO mahasiswa(nama, prodi, fakultas, angkatan, alamat, email, password) 
-                                VALUE ('$nama', '$prodi', '$fakultas', '$angkatan', '$alamat', '$email', '$pass')");
+        mysqli_query($conn, "INSERT INTO mahasiswa(nama, prodi, fakultas, angkatan, alamat, email, password) VALUE ('$nama', '$prodi', '$fakultas', '$angkatan', '$alamat', '$email', '$pass')");
         return mysqli_affected_rows($conn);
     }
 }
@@ -70,7 +69,7 @@ if (isset($_POST['login'])) {
                     $_SESSION['email'] = $row['email'];
 
                     echo '<script language="javascript">
-                alert ("Registrasi Berhasil Di Lakukan!");
+                alert ("Login Berhasil Di Lakukan!");
                 window.location="beranda.php";
                 </script>';
                     exit();
