@@ -55,7 +55,7 @@ $data = mysqli_query($conn, "SELECT * FROM jadwal");
                             <td scope="col"><?= $jadwal['offr']; ?></td>
                             <td scope="col"><?= $jadwal['dosen']; ?></td>
                             <td>
-                                <a class="btn btn-primary" href="">Detail</a>
+                                <a class="btn btn-primary" href="detail.php?id=<?php echo $jadwal['id_jadwal']; ?>">Detail</a>
                             </td>
                         </tr>
                     <?php endwhile; ?>
