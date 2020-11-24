@@ -22,7 +22,11 @@ if (isset($_POST['register'])) {
             header("Location: register.php?error=emailtaken");
             exit();
         } else {
-            header("Location: register.php?success=registered");
+            echo '<script language="javascript">
+                alert ("Registrasi Berhasil Di Lakukan!");
+                window.location="login.php";
+                </script>';
+            exit();
         }
 
         $pass = password_hash($pass, PASSWORD_DEFAULT);
@@ -62,7 +66,11 @@ if (isset($_POST['login'])) {
                     $_SESSION['nim'] = $row['nim'];
                     $_SESSION['email'] = $row['email'];
 
-                    header("Location: home.php?succsess=loggedin");
+                    echo '<script language="javascript">
+                alert ("Registrasi Berhasil Di Lakukan!");
+                window.location="beranda.php";
+                </script>';
+                    exit();
                     exit();
                 } else {
                     header("Location: login.php?error=wrongpass");

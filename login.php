@@ -20,7 +20,7 @@
                 <input type="password" class="form-control" id="password" name="password" placeholder="password">
             </div>
             <button type="submit" name="login" class="btn btn-primary">Login</button>
-            <a class="nav-link link" href="">Forget your password ?</a>
+            <a class="nav-link link" href="register.php">Create Account Here</a>
         </form>
     </div>
 
