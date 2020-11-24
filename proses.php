@@ -4,12 +4,15 @@ require 'connect.php';
 
 if (isset($_POST['register'])) {
     $nama = $_POST['nama'];
+    $prodi = $_POST['prodi'];
+    $fakultas = $_POST['fakultas'];
+    $angkatan = $_POST['angkatan'];
     $alamat = $_POST['alamat'];
     $email = $_POST['email'];
     $pass = $_POST['password'];
     $pass1 = $_POST['password1'];
 
-    if (empty($nama) || empty($alamat) || empty($email) || empty($pass) || empty($pass1)) {
+    if (empty($nama) || empty($prodi) || empty($fakultas) || empty($angkatan) || empty($alamat) || empty($email) || empty($pass) || empty($pass1)) {
         header("Location: register.php?error=emptyfields&nama=" . $nama);
         exit();
     } elseif ($pass !== $pass1) {
@@ -26,12 +29,12 @@ if (isset($_POST['register'])) {
                 alert ("Registrasi Berhasil Di Lakukan!");
                 window.location="login.php";
                 </script>';
-            exit();
         }
 
         $pass = password_hash($pass, PASSWORD_DEFAULT);
 
-        mysqli_query($conn, "INSERT INTO mahasiswa(nama, alamat, email, password) VALUE ('$nama', '$alamat', '$email', '$pass')");
+        mysqli_query($conn, "INSERT INTO mahasiswa(nama, prodi, fakultas, angkatan, alamat, email, password) 
+                                VALUE ('$nama', '$prodi', '$fakultas', '$angkatan', '$alamat', '$email', '$pass')");
         return mysqli_affected_rows($conn);
     }
 }
@@ -70,7 +73,6 @@ if (isset($_POST['login'])) {
                 alert ("Registrasi Berhasil Di Lakukan!");
                 window.location="beranda.php";
                 </script>';
-                    exit();
                     exit();
                 } else {
                     header("Location: login.php?error=wrongpass");

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="css/login.css">
-    <title>Document</title>
+    <title>Daftar</title>
 </head>
 
 <body>
@@ -15,6 +15,15 @@
         <form action="proses.php" method="post">
             <div class="form-group">
                 <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="prodi" name="prodi" placeholder="Prodi" value="Teknik Informatika">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="fakultas" name="fakultas" placeholder="Fakultas" value="Teknik">
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" id="angkatan" name="angkatan" placeholder="Angkatan" value="2019">
             </div>
             <div class="form-group">
                 <input type="text" class="form-control" id="alamat" name="alamat" placeholder="alamat">
