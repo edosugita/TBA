@@ -33,7 +33,8 @@ if (isset($_POST['register'])) {
 
         $pass = password_hash($pass, PASSWORD_DEFAULT);
 
-        mysqli_query($conn, "INSERT INTO mahasiswa(nama, prodi, fakultas, angkatan, alamat, email, password) VALUE ('$nama', '$prodi', '$fakultas', '$angkatan', '$alamat', '$email', '$pass')");
+        mysqli_query($conn, "INSERT INTO mahasiswa(nama, prodi, fakultas, angkatan, alamat, email, password) 
+                                VALUE ('$nama', '$prodi', '$fakultas', '$angkatan', '$alamat', '$email', '$pass')");
         return mysqli_affected_rows($conn);
     }
 }
