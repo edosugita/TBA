@@ -25,7 +25,6 @@ require_once 'navbar.php';
                 <th scope="col">DOSEN</th>
                 <!-- <th scope="col">KAPASITAS</th> -->
                 <th scope="col"></th>
-                <th scope="col"></th>
             </thead>
             <tbody>
                 <?php $i = 1; ?>
@@ -38,7 +37,7 @@ require_once 'navbar.php';
                         <td scope="col"><?= $matkul['kelas']; ?></td>
                         <td scope="col"><?= $matkul['nama']; ?></td>
                         <td>
-                            <button type="submit" class="btn btn-primary">Ambil</button>
+                            <a name="ambil" class="btn btn-primary" href="<?= $matkul['id_matkul']; ?>">Ambil</a>
                         </td>
                     </tr>
                 <?php endwhile; ?>

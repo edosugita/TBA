@@ -84,7 +84,7 @@ require_once 'navbar.php';
                 </table>
             </div>
             <button type="submit" onclick="location.href='tambah.php';" name="tambah" class="btn btn-primary float-right">Tambah Matakuliah</button>
-            <button type="submit" name="cetak" class="btn btn-primary float-left" onclick="window.print()">Cetak Krs</button>
+            <button type="submit" name="cetak" class="btn btn-primary float-left" onclick="location.href='cetak.php';">Cetak Krs</button>
         </div>
     </div>
 </main>
