@@ -9,8 +9,8 @@ if (!isset($_SESSION['nim'])) {
     exit();
 }
 
-$data = mysqli_query($conn, "SELECT m.id_matkul, m.kode_matkul, m.nama_matkul, m.sks, kelas, offr, d.nama FROM matakuliah m INNER JOIN jadwal j ON m.id_matkul = j.id_matkul INNER JOIN dosen d ON j.id_dosen = d.id_dosen ORDER BY kode_matkul ASC");
-$sum = mysqli_query($conn, "SELECT SUM(sks) AS sks FROM matakuliah");
+$data = mysqli_query($conn, "SELECT m.id_matkul, m.kode_matkul, m.nama_matkul, m.sks, m.kelas, offr, d.nama FROM matakuliah m INNER JOIN jadwal j ON m.id_matkul = j.id_matkul INNER JOIN dosen d ON j.id_dosen = d.id_dosen ORDER BY kode_matkul ASC");
+$sum = mysqli_query($conn, "SELECT SUM(sks) AS sks FROM matakuliah m JOIN jadwal j ON m.id_matkul = j.id_matkul");
 $sks = mysqli_fetch_assoc($sum);
 
 $title = ['title' => 'Rencana Studi | Siakad'];
@@ -22,7 +22,7 @@ require_once 'navbar.php';
         <div class="col-md-12 p-4 p-md-5">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                    <li class="breadcrumb-item active" aria-current="page"><a class="color" href="home.php">Dashboard</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Rencana Studi</li>
                 </ol>
             </nav>
