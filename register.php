@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <h5>Daftar ke SIAKAD</h5>
-        <form action="proses.php" method="post">
+        <form action="proses.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama">
             </div>
@@ -36,6 +36,10 @@
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" id="password1" name="password1" placeholder="Confirm Password">
+            </div>
+            Upload Gambar
+            <div class="form-group">
+                <input type="file" class="form-control" name="gambar">
             </div>
             <button type="submit" name="register" class="btn btn-primary">Daftar</button>
         </form>

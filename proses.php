@@ -11,6 +11,11 @@ if (isset($_POST['register'])) {
     $email = $_POST['email'];
     $pass = $_POST['password'];
     $pass1 = $_POST['password1'];
+    $temp = $_FILES['gambar']['tmp_name'];
+    $name = rand(0, 9999) . $_FILES['gambar']['name'];
+    $size = $_FILES['gambar']['size'];
+    $type = $_FILES['gambar']['type'];
+    $folder = "img/";
 
     if (empty($nama) || empty($prodi) || empty($fakultas) || empty($angkatan) || empty($alamat) || empty($email) || empty($pass) || empty($pass1)) {
         header("Location: register.php?error=emptyfields&nama=" . $nama);
@@ -18,6 +23,8 @@ if (isset($_POST['register'])) {
     } elseif ($pass !== $pass1) {
         header("Location: register.php?error=passwordsdonotmatch&firstname=" . $nama);
         exit();
+    } elseif ($size > 2048000) {
+        header("Location: register.php?error=errorimagesize");
     } else {
         $result = mysqli_query($conn, "SELECT email FROM mahasiswa WHERE email = '$email'");
 
@@ -33,7 +40,9 @@ if (isset($_POST['register'])) {
 
         $pass = password_hash($pass, PASSWORD_DEFAULT);
 
-        mysqli_query($conn, "INSERT INTO mahasiswa(nama, prodi, fakultas, angkatan, alamat, email, password) VALUE ('$nama', '$prodi', '$fakultas', '$angkatan', '$alamat', '$email', '$pass')");
+        move_uploaded_file($temp, $folder . $name);
+
+        mysqli_query($conn, "INSERT INTO mahasiswa(nama, prodi, fakultas, angkatan, alamat, email, password, picture) VALUE ('$nama', '$prodi', '$fakultas', '$angkatan', '$alamat', '$email', '$pass', '$name')");
         return mysqli_affected_rows($conn);
     }
 }
