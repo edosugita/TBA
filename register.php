@@ -17,13 +17,16 @@
                 <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="prodi" name="prodi" placeholder="Prodi" value="Teknik Informatika">
+                <input type="text" class="form-control" value="Teknik Informatika" disabled>
+                <input type="hidden" class="form-control" id="prodi" name="prodi" placeholder="Prodi" value="Teknik Informatika">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="fakultas" name="fakultas" placeholder="Fakultas" value="Teknik">
+                <input type="text" class="form-control" value="Teknik" disabled>
+                <input type="hidden" class="form-control" id="fakultas" name="fakultas" placeholder="Fakultas" value="Teknik">
             </div>
             <div class="form-group">
-                <input type="number" class="form-control" id="angkatan" name="angkatan" placeholder="Angkatan" value="2019">
+                <input type="number" class="form-control" value="2019" disabled>
+                <input type="hidden" class="form-control" id="angkatan" name="angkatan" placeholder="Angkatan" value="2019">
             </div>
             <div class="form-group">
                 <input type="text" class="form-control" id="alamat" name="alamat" placeholder="alamat">
@@ -37,8 +40,8 @@
             <div class="form-group">
                 <input type="password" class="form-control" id="password1" name="password1" placeholder="Confirm Password">
             </div>
-            Upload Gambar
             <div class="form-group">
+                <label for="upload">Upload Gambar</label>
                 <input type="file" class="form-control" name="gambar">
             </div>
             <button type="submit" name="register" class="btn btn-primary">Daftar</button>

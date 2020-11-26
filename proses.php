@@ -17,6 +17,9 @@ if (isset($_POST['register'])) {
     $type = $_FILES['gambar']['type'];
     $folder = "img/";
 
+    $tahun = date("Y");
+    $jur = 19;
+
     if (empty($nama) || empty($prodi) || empty($fakultas) || empty($angkatan) || empty($alamat) || empty($email) || empty($pass) || empty($pass1)) {
         header("Location: register.php?error=emptyfields&nama=" . $nama);
         exit();
@@ -27,10 +30,15 @@ if (isset($_POST['register'])) {
         header("Location: register.php?error=errorimagesize");
     } else {
         $result = mysqli_query($conn, "SELECT email FROM mahasiswa WHERE email = '$email'");
+        $query = mysqli_query($conn, "SELECT * FROM mahasiswa WHERE substr(nim,1,2) = '$jur' order by nim desc");
+        $data = mysqli_fetch_assoc($query);
+        $id_old = $data['nim'];
 
         if (mysqli_fetch_assoc($result)) {
             header("Location: register.php?error=emailtaken");
             exit();
+        } elseif (mysqli_num_rows($query) < 1) {
+            $primary = $jur . $tahun . "6401";
         } else {
             echo '<script language="javascript">
                 alert ("Registrasi Berhasil Di Lakukan!");
@@ -42,7 +50,7 @@ if (isset($_POST['register'])) {
 
         move_uploaded_file($temp, $folder . $name);
 
-        mysqli_query($conn, "INSERT INTO mahasiswa(nama, prodi, fakultas, angkatan, alamat, email, password, picture) VALUE ('$nama', '$prodi', '$fakultas', '$angkatan', '$alamat', '$email', '$pass', '$name')");
+        mysqli_query($conn, "INSERT INTO mahasiswa(nim, nama, prodi, fakultas, angkatan, alamat, email, password, picture) VALUE ('$primary', '$nama', '$prodi', '$fakultas', '$angkatan', '$alamat', '$email', '$pass', '$name')");
         return mysqli_affected_rows($conn);
     }
 }

@@ -1,0 +1,11 @@
+.pcolor {
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  float: left;
+}
+
+.list-group-item p {
+  margin-top: 16px;
+  margin-left: 40px;
+}

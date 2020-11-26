@@ -7,7 +7,7 @@ if (!isset($_SESSION['nim'])) {
     header("Location: login.php?error=younotsigin");
     exit();
 }
-$data = mysqli_query($conn, "SELECT m.id_matkul, m.kode_matkul, m.nama_matkul, m.sks, m.kelas, d.nama 
+$data = mysqli_query($conn, "SELECT m.id_matkul, m.kode_matkul, m.nama_matkul, m.sks, m.kelas, m.hari, m.jam, d.nama 
                                 FROM matakuliah m 
                                     JOIN dosen d ON m.id_dosen = d.id_dosen 
                                         ORDER BY kode_matkul ASC");
@@ -26,6 +26,7 @@ require_once 'navbar.php';
                 <th scope="col">SKS</th>
                 <th scope="col">KELAS</th>
                 <th scope="col">DOSEN</th>
+                <th scope="col">JADWAL</th>
                 <!-- <th scope="col">KAPASITAS</th> -->
                 <th scope="col"></th>
             </thead>
@@ -39,6 +40,7 @@ require_once 'navbar.php';
                         <td scope="col"><?= $matkul['sks']; ?></td>
                         <td scope="col"><?= $matkul['kelas']; ?></td>
                         <td scope="col"><?= $matkul['nama']; ?></td>
+                        <td scope="col"><?= $matkul['jam'] . ' ' . $matkul['hari']; ?></td>
                         <td>
                             <a name="ambil" class="btn btn-primary" href="ambil.php?id=<?= $matkul['id_matkul'] . 'dosen=' . $matkul['nama']; ?>">Ambil</a>
                         </td>
