@@ -103,7 +103,7 @@ if (isset($_POST['ambil'])) {
 
     $max = $sksnilai + $sumsks;
 
-    if ($max >= 24) {
+    if ($max > 24) {
         echo '<script language="javascript">
                 alert ("Mahasiswa Hanya Dapat Mengambil 24 SKS!");
                 window.location="rencanastudi.php";

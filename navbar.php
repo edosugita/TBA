@@ -36,23 +36,14 @@ $row = mysqli_fetch_assoc($result);
             <div class="p-4 pt-5">
                 <a href="home.php" class="img logo rounded-circle mb-5" style="background-image: url(img/logo.png);"></a>
                 <center>
-                    <p>Dashboard Siakad UM</p><br>
+                    <p>Dashboard Siakad UM</p>
                 </center>
                 <ul class="list-unstyled components mb-5">
                     <li>
-                        <a href="#">Kurikulum</a>
-                    </li>
-                    <li>
-                        <a href="#">Jadwal Kuliah</a>
-                    </li>
-                    <li>
-                        <a href="#">Kartu Hasil Studi</a>
+                        <a href="jadwal.php">Jadwal Kuliah</a>
                     </li>
                     <li>
                         <a href="rencanastudi.php">Rencana Studi</a>
-                    </li>
-                    <li>
-                        <a href="#">Daftar Hasil Studi</a>
                     </li>
                 </ul>
 
@@ -69,19 +60,16 @@ $row = mysqli_fetch_assoc($result);
                         <i class="fa fa-bars"></i>
                         <span class="sr-only">Toggle Menu</span>
                     </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fa fa-bars"></i>
-                    </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><?= $row['nama']; ?></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="logout.php">Log Out</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <?= $row['nama']; ?>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="logout.php">Log Out</a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </nav>
