@@ -7,7 +7,10 @@ if (!isset($_SESSION['nim'])) {
     header("Location: login.php?error=younotsigin");
     exit();
 }
-$data = mysqli_query($conn, "SELECT m.kode_matkul, m.nama_matkul, m.sks, m.kelas, d.nama FROM matakuliah m JOIN dosen d ON m.id_dosen = d.id_dosen ORDER BY kode_matkul ASC");
+$data = mysqli_query($conn, "SELECT m.id_matkul, m.kode_matkul, m.nama_matkul, m.sks, m.kelas, d.nama 
+                                FROM matakuliah m 
+                                    JOIN dosen d ON m.id_dosen = d.id_dosen 
+                                        ORDER BY kode_matkul ASC");
 
 $title = ['title' => 'Tambah Mata Kuliah | Siakad'];
 require_once 'navbar.php';
@@ -37,7 +40,7 @@ require_once 'navbar.php';
                         <td scope="col"><?= $matkul['kelas']; ?></td>
                         <td scope="col"><?= $matkul['nama']; ?></td>
                         <td>
-                            <a name="ambil" class="btn btn-primary" href="<?= $matkul['id_matkul']; ?>">Ambil</a>
+                            <a name="ambil" class="btn btn-primary" href="ambil.php?id=<?= $matkul['id_matkul'] . 'dosen=' . $matkul['nama']; ?>">Ambil</a>
                         </td>
                     </tr>
                 <?php endwhile; ?>

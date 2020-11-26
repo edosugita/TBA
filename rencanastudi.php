@@ -8,9 +8,19 @@ if (!isset($_SESSION['nim'])) {
     header("Location: login.php?error=younotsigin");
     exit();
 }
+$email = isset($_SESSION['email']) ? $_SESSION['email'] : '';
 
-$data = mysqli_query($conn, "SELECT m.id_matkul, m.kode_matkul, m.nama_matkul, m.sks, m.kelas, offr, d.nama FROM matakuliah m INNER JOIN jadwal j ON m.id_matkul = j.id_matkul INNER JOIN dosen d ON j.id_dosen = d.id_dosen ORDER BY kode_matkul ASC");
-$sum = mysqli_query($conn, "SELECT SUM(sks) AS sks FROM matakuliah m JOIN jadwal j ON m.id_matkul = j.id_matkul");
+$data = mysqli_query($conn, "SELECT m.id_matkul, m.kode_matkul, m.nama_matkul, m.offr, m.sks, m.kelas, d.nama, n.email 
+                        FROM matakuliah m 
+                            INNER JOIN jadwal j ON m.id_matkul = j.id_matkul 
+                                INNER JOIN dosen d ON j.id_dosen = d.id_dosen 
+                                    INNER JOIN mahasiswa n ON j.nim = n.nim 
+                                        WHERE email = '$email' ORDER BY kode_matkul ASC");
+$sum = mysqli_query($conn, "SELECT SUM(m.sks) AS sks, n.email
+                                FROM matakuliah m 
+                                    INNER JOIN jadwal j ON m.id_matkul = j.id_matkul
+                                        INNER JOIN mahasiswa n ON j.nim = n.nim 
+                                            WHERE email = '$email'");
 $sks = mysqli_fetch_assoc($sum);
 
 $title = ['title' => 'Rencana Studi | Siakad'];

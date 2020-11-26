@@ -84,3 +84,27 @@ if (isset($_POST['login'])) {
         }
     }
 }
+
+if (isset($_POST['ambil'])) {
+    $idmatkul = $_POST['idmatkul'];
+    $nim = $_POST['nim'];
+    $dosen = $_POST['iddosen'];
+    $sksnilai = $_POST['sksnilai'];
+    $sumsks = $_POST['sumsks'];
+
+    $max = $sksnilai + $sumsks;
+
+    if ($max >= 24) {
+        echo '<script language="javascript">
+                alert ("Mahasiswa Hanya Dapat Mengambil 24 SKS!");
+                window.location="rencanastudi.php";
+                </script>';
+    } else {
+
+        $ambilk = mysqli_query($conn, "INSERT INTO jadwal(id_matkul, id_dosen, nim) VALUE ('$idmatkul', '$dosen', '$nim')");
+        echo '<script language="javascript">
+                alert ("Matakuliah Berhasil ditambahkan !");
+                window.location="rencanastudi.php";
+                </script>';
+    }
+}
