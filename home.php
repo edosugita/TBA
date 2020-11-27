@@ -12,6 +12,14 @@ if (!isset($_SESSION['nim'])) {
 
 $result = mysqli_query($conn, "SELECT * FROM mahasiswa WHERE email = '$email'");
 $row = mysqli_fetch_assoc($result);
+
+$sum = mysqli_query($conn, "SELECT SUM(m.sks) AS sks, n.email
+                                FROM matakuliah m 
+                                    INNER JOIN jadwal j ON m.id_matkul = j.id_matkul
+                                        INNER JOIN mahasiswa n ON j.nim = n.nim 
+                                            WHERE email = '$email'");
+$sks = mysqli_fetch_assoc($sum);
+
 $title = ['title' => 'Dashboard | Siakad'];
 require_once 'navbar.php';
 
@@ -66,31 +74,31 @@ require_once 'navbar.php';
         <div class="col d-flex justify-content-center">
             <div class="card-deck">
                 <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
+                    <div class="card-header">Jumlah SKS</div>
                     <div class="card-body">
-                        <h5 class="card-title">Primary card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <h5 class="card-title"><?= $sks['sks']; ?></h5>
+                        <p class="card-text">Jumlah SKS Genap 2019/2020</p>
                     </div>
                 </div>
                 <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
+                    <div class="card-header">Batas Waktu</div>
                     <div class="card-body">
-                        <h5 class="card-title">Success card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <h5 class="card-title">Genap 2025/2026</h5>
+                        <p class="card-text">Batas Masa Studi</p>
                     </div>
                 </div>
                 <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
+                    <div class="card-header">Status</div>
                     <div class="card-body">
-                        <h5 class="card-title">Info card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <h5 class="card-title">Status anda aktif</h5>
+                        <p class="card-text">Gasal 2020/2021</p>
                     </div>
                 </div>
                 <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
+                    <div class="card-header">Evaluasi PBM</div>
                     <div class="card-body">
-                        <h5 class="card-title">Danger card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <h5 class="card-title">Anda sudah mengisi</h5>
+                        <p class="card-text">Evaluasi PBM Genap 2019/2020</p>
                     </div>
                 </div>
             </div>
