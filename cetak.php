@@ -7,8 +7,8 @@ require_once 'connect.php';
 require_once 'proses.php';
 session_start();
 
-$data = mysqli_query($conn, "SELECT m.id_matkul, m.kode_matkul, m.nama_matkul, m.sks, m.kelas, offr, d.nama FROM matakuliah m INNER JOIN jadwal j ON m.id_matkul = j.id_matkul INNER JOIN dosen d ON j.id_dosen = d.id_dosen ORDER BY kode_matkul ASC");
 $email = isset($_SESSION['email']) ? $_SESSION['email'] : '';
+$data = mysqli_query($conn, "SELECT m.id_matkul, m.kode_matkul, m.nama_matkul, m.sks, m.kelas, offr, d.nama FROM matakuliah m INNER JOIN jadwal j ON m.id_matkul = j.id_matkul INNER JOIN dosen d ON j.id_dosen = d.id_dosen INNER JOIN mahasiswa ma ON j.nim = ma.nim WHERE email = '$email' ORDER BY kode_matkul ASC");
 
 if (!isset($_SESSION['nim'])) {
     header("Location: login.php?error=younotsigin");
