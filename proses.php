@@ -111,7 +111,7 @@ if (isset($_POST['ambil'])) {
     $matkul = $_POST['matkul'];
 
     $maxmatkul = mysqli_query($conn, "SELECT id_matkul FROM jadwal WHERE id_matkul = '$idmatkul'");
-    $maxnama = mysqli_query($conn, "SELECT nama FROM jadwal WHERE nama = '$matkul'");
+    $maxnama = mysqli_query($conn, "SELECT nama FROM jadwal WHERE nama = '$matkul' AND nim = '$nim'");
     $nimmax = mysqli_query($conn, "SELECT nim FROM jadwal WHERE nim = '$nim'");
 
     $max = $sksnilai + $sumsks;
@@ -123,7 +123,7 @@ if (isset($_POST['ambil'])) {
                 </script>';
     } else {
 
-        if (mysqli_num_rows($maxmatkul) == 0 || mysqli_num_rows($nimmax) == 0) {
+        if (mysqli_num_rows($maxmatkul) == 0 || mysqli_num_rows($nimmax) >= 0) {
             if (mysqli_num_rows($maxnama) == 0) {
                 $ambilk = mysqli_query($conn, "INSERT INTO jadwal(id_matkul, id_dosen, nim, nama) VALUE ('$idmatkul', '$dosen', '$nim', '$matkul')");
                 echo '<script language="javascript">
