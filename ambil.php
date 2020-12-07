@@ -45,7 +45,8 @@ require_once 'navbar.php';
                 <form action="proses.php" method="post">
                     <div class="form-group">
                         <label for="matkul">Matakuliah</label>
-                        <input type="text" class="form-control" id="matkul" name="matkul" value="<?= $matkul['nama_matkul'] ?>" disabled>
+                        <input type="text" class="form-control" id="matkul" value="<?= $matkul['nama_matkul'] ?>" disabled>
+                        <input type="hidden" class="form-control" id="matkul" name="matkul" value="<?= $matkul['nama_matkul'] ?>">
                         <input type="hidden" class="form-control" id="sumsks" name="sumsks" value="<?= $sks['sks'] ?>">
                         <input type="hidden" class="form-control" id="idmatkul" name="idmatkul" value="<?= $matkul['id_matkul'] ?>">
                         <input type="hidden" class="form-control" id="nim" name="nim" value="<?= $ambilnim['nim'] ?>">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Nov 2020 pada 21.20
+-- Waktu pembuatan: 07 Des 2020 pada 06.59
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.2
 
@@ -54,21 +54,22 @@ CREATE TABLE `jadwal` (
   `id_jadwal` int(11) NOT NULL,
   `id_matkul` int(11) NOT NULL,
   `id_dosen` int(11) NOT NULL,
-  `nim` int(11) NOT NULL
+  `nim` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `jadwal`
 --
 
-INSERT INTO `jadwal` (`id_jadwal`, `id_matkul`, `id_dosen`, `nim`) VALUES
-(28, 1, 1, 1920206404),
-(29, 2, 1, 1920206404),
-(30, 3, 2, 1920206404),
-(32, 4, 3, 1920206404),
-(33, 5, 4, 1920206404),
-(34, 6, 2, 1920206404),
-(35, 7, 5, 1920206404);
+INSERT INTO `jadwal` (`id_jadwal`, `id_matkul`, `id_dosen`, `nim`, `nama`) VALUES
+(28, 1, 1, 1920206404, 'Pemrograman Web'),
+(29, 2, 1, 1920206404, 'Sistem Operasi'),
+(30, 3, 2, 1920206404, 'Teori Bahasa dan Otomata'),
+(32, 4, 3, 1920206404, 'Pemrograman Berorientasi Obyek'),
+(33, 5, 4, 1920206404, 'Basis Data II'),
+(34, 6, 2, 1920206404, 'Kalkulus Lanjut'),
+(62, 7, 5, 1920206404, 'Interaksi Manusia dan Komputer');
 
 -- --------------------------------------------------------
 
@@ -208,13 +209,13 @@ ALTER TABLE `dosen`
 -- AUTO_INCREMENT untuk tabel `jadwal`
 --
 ALTER TABLE `jadwal`
-  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT untuk tabel `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `nim` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1920206405;
+  MODIFY `nim` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1920206407;
 
 --
 -- AUTO_INCREMENT untuk tabel `matakuliah`

@@ -108,6 +108,11 @@ if (isset($_POST['ambil'])) {
     $dosen = $_POST['iddosen'];
     $sksnilai = $_POST['sksnilai'];
     $sumsks = $_POST['sumsks'];
+    $matkul = $_POST['matkul'];
+
+    $maxmatkul = mysqli_query($conn, "SELECT id_matkul FROM jadwal WHERE id_matkul = '$idmatkul'");
+    $maxnama = mysqli_query($conn, "SELECT nama FROM jadwal WHERE nama = '$matkul'");
+    $nimmax = mysqli_query($conn, "SELECT nim FROM jadwal WHERE nim = '$nim'");
 
     $max = $sksnilai + $sumsks;
 
@@ -118,10 +123,24 @@ if (isset($_POST['ambil'])) {
                 </script>';
     } else {
 
-        $ambilk = mysqli_query($conn, "INSERT INTO jadwal(id_matkul, id_dosen, nim) VALUE ('$idmatkul', '$dosen', '$nim')");
-        echo '<script language="javascript">
+        if (mysqli_num_rows($maxmatkul) == 0 || mysqli_num_rows($nimmax) == 0) {
+            if (mysqli_num_rows($maxnama) == 0) {
+                $ambilk = mysqli_query($conn, "INSERT INTO jadwal(id_matkul, id_dosen, nim, nama) VALUE ('$idmatkul', '$dosen', '$nim', '$matkul')");
+                echo '<script language="javascript">
                 alert ("Matakuliah Berhasil ditambahkan !");
                 window.location="rencanastudi.php";
                 </script>';
+            } else {
+                echo '<script language="javascript">
+                    alert ("Mahasiswa Hanya Dapat Mengambil 1 Matakuliah Yang Sama!");
+                    window.location="rencanastudi.php";
+                    </script>';
+            }
+        } else {
+            echo '<script language="javascript">
+                alert ("Mahasiswa Hanya Dapat Mengambil 1 Matakuliah Yang Sama!");
+                window.location="rencanastudi.php";
+                </script>';
+        }
     }
 }
