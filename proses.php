@@ -116,6 +116,8 @@ if (isset($_POST['ambil'])) {
 
     $max = $sksnilai + $sumsks;
 
+    $cekalpro = mysqli_query($conn, "SELECT id_matkul FROM jadwal WHERE id_matkul = 44 AND nim = $nim");
+
     if ($max > 24) {
         echo '<script language="javascript">
                 alert ("Mahasiswa Hanya Dapat Mengambil 24 SKS!");
@@ -125,11 +127,18 @@ if (isset($_POST['ambil'])) {
 
         if (mysqli_num_rows($maxmatkul) == 0 || mysqli_num_rows($nimmax) >= 0) {
             if (mysqli_num_rows($maxnama) == 0) {
-                $ambilk = mysqli_query($conn, "INSERT INTO jadwal(id_matkul, id_dosen, nim, nama) VALUE ('$idmatkul', '$dosen', '$nim', '$matkul')");
-                echo '<script language="javascript">
+                if (mysqli_num_rows($cekalpro) > 0 || $idmatkul == '44' || $idmatkul == '2') {
+                    $ambilk = mysqli_query($conn, "INSERT INTO jadwal(id_matkul, id_dosen, nim, nama) VALUE ('$idmatkul', '$dosen', '$nim', '$matkul')");
+                    echo '<script language="javascript">
                 alert ("Matakuliah Berhasil ditambahkan !");
                 window.location="rencanastudi.php";
                 </script>';
+                } else {
+                    echo '<script language="javascript">
+                    alert ("Anda Belum Mengambil Matakuliah Algoritma dan Pemgrograman!");
+                    window.location="rencanastudi.php";
+                    </script>';
+                }
             } else {
                 echo '<script language="javascript">
                     alert ("Mahasiswa Hanya Dapat Mengambil 1 Matakuliah Yang Sama!");
